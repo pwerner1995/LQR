@@ -1,0 +1,13 @@
+<h1>Drinks</h1>
+<br>
+<%=link_to “Create a drink”, new_drink_path%>
+<hr><br>
+<% @drinks.each do |d| %>
+ <%=link_to d.name, drink_path(d)%>
+ <p>Price: $<%= sprintf( “%0.02f”, d.price) %></p>
+ <br>
+ <%=link_to “Edit”, edit_drink_path(d)%>
+ <%=link_to “Delete”, delete_drink_path(d)%>
+ <hr>
+<% end %>
+<%=link_to “Home”, home_path%>

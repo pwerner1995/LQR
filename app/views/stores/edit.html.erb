@@ -1,0 +1,6 @@
+<h1>Editing <%= @store.location %>:</h1>
+<%= form_for @store do |f| %>
+ <%= f.label :location %>
+ <%= f.text_field :location %>
+ <%= f.submit %>
+<% end %>

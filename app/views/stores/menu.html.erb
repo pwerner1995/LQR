@@ -1,0 +1,18 @@
+<% if !@store.menu.empty? %>
+ <h1>Menu for location: <%=@store.location%></h1>
+   <% @store.menu.each do |k| %>
+     <h3>
+     <%=link_to k.name, drink_path(k) %> - $<%= sprintf( “%0.02f”, k.price ) %>
+     <%= link_to “Remove from Menu”, delete_store_drink_path(StoreDrink.find_by(store_id: @store.id, drink_id: k.id)) %>
+     </h3>
+   <% end %>
+<% else %>
+ <h1>Menu for location: <%= @store.location %> is empty!</h1>
+ <h3><%= link_to “Back”, stores_path %></h3>
+<%end%>
+<%= form_for @drink, :url => store_create_menu_item_from_store_path(@store) do |f| %>
+ <%= f.collection_select(:id, Drink.all, :id, :name) %>
+ <%= f.submit “Add Drink to Store Menu” %>
+<% end %>
+<br>
+<%= link_to “Back to Stores”, stores_path %>

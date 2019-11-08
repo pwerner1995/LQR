@@ -1,0 +1,9 @@
+<h1><%= @store.name %></h1>
+<h2>Menu</h2>
+<% @store.menu.each do |item| %>
+ <h6><%= item.name %></h6>
+ <p>$<%= sprintf( “%0.02f”,item.price) %></p>
+ <hr>
+<% end %>
+<br>
+<%= link_to “Back to Stores”, stores_path %>
